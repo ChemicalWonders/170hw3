@@ -1,4 +1,4 @@
-###This is the README file for Kevin Chan's 170 homework#3
+#This is the README file for Kevin Chan's 170 homework#3
 
 ##So far, I have finished the following things:
 
@@ -14,9 +14,8 @@ It will print out "Usage: ./a.out n m" if values are not printed out.
 
 
 
-###Things I have yet to finish before I update the README:
+##Things I have yet to finish before I update the README:
 
-1. Creating the initial grid, and allowing for a start space and
-obsticles.
+1. The start space is created and initated, but does not print out.
 
 2. Completing the value iterations, and finishing the final grid.

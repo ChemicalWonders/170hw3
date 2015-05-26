@@ -154,19 +154,53 @@ pair<Direction, double> GridCell::getPolicy() const
 // Out ->
 Grid::Grid(int n, int m)
 {
-    //GridCell start(, 0.0, true);
+    //Initialize Random Time Seed
+    srand(time(NULL));
+    bool PLUS = true;
 
     bounds = pair<int,int>(n, n);
     grid = vector<vector<GridCell> >(bounds.first, vector<GridCell>(bounds.second));
-    startLocation = pair<int,int>(-1, -1);
-    
-    /* Currently ignores the m parameter in terms of rewards and penalty placement.
+    startLocation = pair<int,int>(rand()%n, rand()%n);
+
+    //Creating the Terminal end-points
+    for(int i = 0; i < 2*m; ++i)
+    {
+      //Remembering the numbers A and B for future use
+      //We always keep making new numbers however
+      int a = rand()%n;
+      int b = rand()%n;
+
+      if(grid.at(a).at(b).type == GridCell::BLANK)
+      {
+        grid.at(a).at(b).type = GridCell::TERMINAL;
+        if (PLUS)
+        {
+          grid.at(a).at(b).reward = +10.00;
+          PLUS = false;
+        }
+        else
+        {
+          grid.at(a).at(b).reward = -10.00;
+          PLUS = true;
+        }
+      }
+    }
+    // Creating the obstacles
+    for(int i = 0; i <= n; ++i)
+    {
+      //Same as the last for loop, except this time with c and d
+      int c = rand()%n;
+      int d = rand()%n;
+
+      if(grid.at(c).at(d).type == GridCell::BLANK)
+         grid.at(c).at(d).type = GridCell::OBSTACLE;
+
+    }
+      /* Currently ignores the m parameter in terms of rewards and penalty placement.
         Also ignores n obstacle placement and assigns startLocation to invalid
         location on the grid.
      */
 
-    print(pair<int,int>(n,n));
-    //start.print("10", 1);
 }
     
 // Accessors to the 2D grid

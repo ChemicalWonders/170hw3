@@ -25,8 +25,8 @@ int main(int argc, char* argv[])
     cout << "m = " << m << endl;
 
    // Initalizes a grid of size n x n with m obsticles and m rewards
-   Grid::Grid(n, m);
-  // GridCell::print("10", 7);
+   Grid GridA(n, m);
+   GridA.print(pair<int,int>(n,n));
   }
 
   return 0;
