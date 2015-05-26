@@ -16,6 +16,4 @@ It will print out "Usage: ./a.out n m" if values are not printed out.
 
 ##Things I have yet to finish before I update the README:
 
-1. The start space is created and initated, but does not print out.
-
-2. Completing the value iterations, and finishing the final grid.
+1. Completing the value iterations, and finishing the final grid.

@@ -160,7 +160,7 @@ Grid::Grid(int n, int m)
 
     bounds = pair<int,int>(n, n);
     grid = vector<vector<GridCell> >(bounds.first, vector<GridCell>(bounds.second));
-    startLocation = pair<int,int>(rand()%n, rand()%n);
+    startLocation = pair<int,int>(-1, -1);
 
     //Creating the Terminal end-points
     for(int i = 0; i < 2*m; ++i)
@@ -195,6 +195,17 @@ Grid::Grid(int n, int m)
       if(grid.at(c).at(d).type == GridCell::BLANK)
          grid.at(c).at(d).type = GridCell::OBSTACLE;
 
+    }
+    bool startState = true;
+    while(startState)
+    {
+      int a = rand()%n;
+      int b = rand()%n;
+
+      if(grid.at(a).at(b).type == GridCell::BLANK)
+         grid.at(a).at(b).start = true;
+
+      startState = false;
     }
       /* Currently ignores the m parameter in terms of rewards and penalty placement.
         Also ignores n obstacle placement and assigns startLocation to invalid
